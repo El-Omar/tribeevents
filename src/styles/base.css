@@ -1,0 +1,26 @@
+:root {
+  --primary: #f24738;
+  --secondary: #1acbbf;
+  --black: #1c1b20;
+  --light: #f8f8f8;
+}
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+main {
+  font-size: 1rem;
+  background: var(--light);
+  color: var(--black);
+  font-family: 'Montserrat';
+}
+
+button {
+  padding: 0;
+  border: none;
+  outline: none;
+  background: none;
+  cursor: pointer;
+}
