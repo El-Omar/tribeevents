@@ -4,8 +4,8 @@ require("dotenv").config({
 
 module.exports = {
   siteMetadata: {
-    title: `El Omar`,
-    description: `Digital designer and a creative developer. Creating and designing websites for businesses and creatives.`,
+    title: `Tribe Events`,
+    description: `Tribe events for organizing events and supplying workers for your events!`,
     author: `elomar`,
     url: `https://www.elomar.be/`
   },
@@ -36,8 +36,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Elomar-portfolio`,
-        short_name: `Elomar`,
+        name: `Tribe-Events`,
+        short_name: `TribeEvents`,
         start_url: `/`,
         background_color: `#f8f8f8`,
         theme_color: `#f8f8f8`,
@@ -49,7 +49,7 @@ module.exports = {
       resolve: `gatsby-plugin-web-font-loader`,
       options: {
         custom: {
-          families: ['Khula', 'Dancing Script', 'Libre Baskerville', 'Montserrat'],
+          families: ['Lato', 'Montserrat'],
           urls: ['/fonts/fonts.css']
         }
       }

@@ -3,530 +3,281 @@ import styled from 'styled-components';
 
 import { variables, mediaQueries } from "./variables";
 
-const { primary, lightblue, black, lightgreen, secondary } = variables.colors;
+const { colors } = variables;
 const { spacing } = variables.spacing;
-const { heading, italic, script } = variables.fonts;
+const { heading, body } = variables.fonts;
 const { svgs } = variables;
 
 export const Container = styled.div`
 
-  .wrapper__title {
-    margin: 1rem 0;
-    font-family: ${heading};
-    font-size: calc(4rem + (6 - 4) * ((100vw - 320px) / (1920 - 320)));
-    letter-spacing: .18rem;
-
-    ${mediaQueries("md")`
-      font-size: 3.2rem;
-    `}
+  &.no-scroll {
+    height: 100vh;
+    overflow: hidden;
   }
 
-  .italic {
-    font-family: ${italic};
-    font-weight: normal;
-  }
-
-  .subtitle {
-    font-family: ${script};
-    font-size: 2rem;
-    color: var(--primary);
-    display: inline-block;
-  }
-
-  .color-primary {
-    color: var(--primary);
-  }
-
-  .hidden {
-    display: none;
-  }
-
-  .sidebar {
-    width: ${spacing};
-    height: calc(100vh - 6rem);
-    background: white;
-    position: fixed;
-    top: ${spacing};
-
-    &--right {
-      right: 0;
-    }
-  }
-
-  .content {
-    padding: 6rem;
-  }
-
-  .page__header {
-    width: 100%;
-    height: ${spacing};
-    position: fixed;
-    padding: .5rem ${spacing};
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: white;
-    z-index: 5;
-  }
-
-  .wrapper__header {
-    width: 100%;
-    max-width: 50rem;
-    padding: 1rem;
+  .jumbotron__header {
+    padding: 2rem 0;
+    margin-bottom: 2rem;
+    background-image: url(${require('../assets/images/zigzag.png')});
+    background-repeat: no-repeat;
+    background-size: 100px 14px;
+    background-position: bottom left;
 
     &--center {
-      margin-left: auto;
-      margin-right: auto;
       text-align: center;
+      background-position: bottom center;
     }
   }
 
-  .page__footer {
+  .jumbotron__title {
+    margin: 0;
+    font-size: 4.6rem;
+    font-weight: 900;
+    font-family: ${heading};
+    text-transform: uppercase;
+  }
+
+  .jumbotron {
+    position: relative;
+    /* padding: 6rem 3rem; */
+  }
+
+  .jumbotron__image {
     width: 100%;
-    height: ${spacing};
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: white;
-    z-index: 10;
+    height: 100%;
   }
 
-  .logo {
-    height: 4.5rem;
-    width: auto;
-    position: absolute;
-    top: 1rem;
-    left: 2rem;
+  .description {
+    font-size: 1.6rem;
+    line-height: 2.6rem;
+    font-family: ${body};
+    max-width: 58rem;
   }
 
-  .nav__trigger {
+  .btn {
+    max-width: 12rem;
+    height: 4rem;
     display: flex;
-    flex-flow: column;
-    align-items: flex-end;
-    position: absolute;
-    top: 2rem;
-    right: 2.5rem;
-    border-radius: 0;
-  }
-
-  .trigger__line {
-    height: .3rem;
-    background: ${black};
-
-    &--first {
-      width: 2.1rem;
-    }
-
-    &--second {
-      width: 1.8rem;
-      margin: .3rem 0;
-    }
-
-    &--third {
-      width: 1.9rem;
-    }
-  }
-
-  .nav__list {
-    background: green;
-
-    &--closed {
-      display: none;
-    }
-  }
-
-  .wrapper--welcome {
-    height: calc(100vh - 9rem);
-    display: flex;
-    flex-flow: column;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    text-align: center;
+    border: none;
+    text-decoration: none;
+    border-radius: .8rem;
+    font-size: 1.8rem;
+    cursor: pointer;
+    font-weight: bold;
 
-    header {
-      margin-top: ${spacing};
+    &:hover {
+      filter: invert();
+    }
 
-      ${mediaQueries(`sm`)`
-        br {
-          display: none;
-        }
-      `}
+    &-primary {
+      background: ${colors.orange};
+      color: white;
+    }
+
+    &-secondary {
+      background: ${colors.black};
+      color: white;
     }
   }
 
-  .elomar__img {
+  .container {
     width: 100%;
-    height: 60%;
-    /* overflow: hidden; */
-
-    img {
-      /* height: 120%; */
-    }
-
-    ${mediaQueries(`sm`)`
-      display: flex;
-      align-items: flex-end;
-
-      img {
-        height: 60vw;
-      }
-    `}
-
-    ${mediaQueries(`xs`)`
-      img {
-        height: 25rem;
-      }
-    `}
-  }
-
-  .desc {
-    max-width: 40rem;
-    font-size: 1.4rem;
-    line-height: 2.4rem;
-  }
-
-  .wrapper--expertise {
-    margin: 0 -${spacing};
-    /* padding: ${spacing} 0; */
-    background: linear-gradient(180deg, rgba(255, 187, 181, .5), #f2473869);
+    margin-left: auto;
+    margin-right: auto;
     padding: 3rem;
 
-    /* ${mediaQueries(992)` */
-    /* `} */
+    ${mediaQueries(`576`, { feature: `min-width` })`
+      max-width: 540px;
+    `}
+
+    ${mediaQueries(`768`, { feature: `min-width` })`
+      max-width: 720px;
+    `}
+
+    ${mediaQueries(`992`, { feature: `min-width` })`
+      max-width: 960px;
+    `}
+
+    ${mediaQueries(`1200`, { feature: `min-width` })`
+      max-width: 1140px;
+    `}
+
+    ${mediaQueries(`1921`, { feature: `min-width` })`
+      max-width: 1880px;
+    `}
   }
 
-  .skillset {
-    width: 70%;
-    display: flex;
-    margin: 3rem 0;
-    font-size: 1.6rem;
-    line-height: 2.8rem;
-    position: relative;
-    flex-flow: column;
+  .jumbotron--welcome {
 
-    /* ${mediaQueries(992)` */
-      /* flex-flow: column; */
-      /* width: 100%; */
-
-      /* .skillset__content {
-        order: -1;
-      }
-
-      &.skillset--analyze .img__wrap,
-      &.skillset--code .img__wrap {
-        margin-left: auto;
-      }
-
-      &.skillset--design .skillset__content {
-        margin-left: auto;
-      } */
-    /* `} */
-
-    /* Ball */
-    &::before {
+    .container {
+      max-width: 40rem;
       position: absolute;
-      left: -1.5rem;
-      top: -1.5rem;
-      width: ${spacing};
-      height: ${spacing};
-      background: ${black};
-      border-radius: 50%;
-      z-index: 3;
+      left: 3rem;
+      top: 50%;
+      transform: translateY(-50%);
     }
 
-    /* Border bottom */
-    &::after {
+    .gatsby-image-wrapper {
+      width: 85%;
+      margin-left: auto;
+    }
+  }
+
+  //WORKFLOW / steps
+  .jumbotron--workflow {
+    background: ${colors.light};
+    padding-bottom: 12rem;
+
+    * {
+      position: relative;
+      z-index: 2;
+    }
+
+    &::before {
       content: '';
       position: absolute;
       width: 50%;
       height: 100%;
-      bottom: -1rem;
-      right: 0;
-      background: ${black};
+      left: 0;
+      background: ${colors.light};
       z-index: 1;
     }
 
-    &--analyze {
-      margin-right: auto;
-
-      .img__wrap {
-        margin-left: auto;
-      }
-    }
-
-    &--design {
-      margin-left: auto;
-      margin-top: 8rem;
-      margin-bottom: 8rem;
-
-      .skillset__content {
-        margin-left: auto;
-      }
-
-      &::before {
-        left: auto;
-        right: -1.5rem;
-      }
-
-      &::after {
-        right: auto;
-        left: 0;
-      }
-
-      .img__wrap {
-        order: 1;
-      }
-    }
-    
-    &--code {
-      margin-right: auto;
-
-      .img__wrap {
-        margin-left: auto;
-      }
-
-    }
-
-    &__title {
-      font-family: ${heading};
-      margin-bottom: 1rem;
-    }
-
-    .img__wrap {
-      width: 50%;
-      height: 30vh;
-      display: flex;
-      position: relative;
+    &::after {
+      content: "+";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translateX(-50%) translateY(-50%);
+      font-size: 9rem;
+      color: ${colors.black};
       z-index: 2;
     }
 
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+    .jumbotron__header {
+      padding-top: 6rem;
+      padding-bottom: 2rem;
     }
 
-    &__subtitle {
-      display: none;
-      width: 1.5rem;
-      padding: .5rem;
-      padding-top: 2rem;
-      background: white;
-      word-break: break-all;
-      text-align: center;
-      font-size: 1rem;
-      font-family: ${italic};
-
-      &::first-letter {
-        text-transform: uppercase;
-      }
-    }
-
-    &__content {
-      order: -1;
+    .steps-group {
       width: 50%;
+      padding: 3rem;
+      display: inline-block;
+      text-align: center;
+
+      &__title {
+        font-size: 3rem;
+        color: ${colors.black};
+      }
+
+      /* &--you .steps-group__title {
+        color: ${colors.black};
+      } */
+    }
+
+    .steps__wrapper {
+      display: flex;
+    }
+
+    .step {
       display: flex;
       flex-flow: column;
-      justify-content: center;;
-      padding: 2rem;
-      position: relative;
-      z-index: 2;
-      background: white;
-    }
+      align-items: center;
 
-    /* ${mediaQueries("sm")` */
-      .skillset__content,
-      .img__wrap {
-        order: 1;
-        width: 100%;
+      img {
+        width: 20rem;
+        height: 20rem;
       }
-    /* `} */
-  }
 
-  .wrapper--projects {
-    margin-top: 6rem;
+      &__title {
+        font-size: 2.4rem;
+        margin-bottom: .6rem;
+        margin-top: -2rem; //images have spaces with them
+      }
 
-    .subtitle {
-      margin-bottom: 0;
+      .description--step {
+        font-size: 1.6rem;
+        line-height: 2.4rem;
+      }
     }
   }
 
-  .projects__wrap {
+  /* JOIN US */
+  .jumbotron--join {
+    background: ${colors.green};
     display: flex;
-    flex-flow: row wrap;
-    margin: 0 -1rem;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
 
-    ${mediaQueries(`md`)`
-      margin: 0;
-    `}
-  }
-
-  .project {
-    width: calc(50% - 2rem);
-    margin: 1rem;
-    border-radius: .8rem;
-    
-    ${mediaQueries(`md`)`
-      width: 100%;
-      margin: 2rem 0;
-    `}
-
-    .gatsby-image-wrapper {
-      border-radius: .8rem;
-
-      &::after {
-        content: '';
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        left: 0;
-        top: 0;
-        background: ${secondary};
-        opacity: .5;
-      }
-    }
-  }
-
-  .wrapper--contact {
-    margin-top: 6rem;
-
-    .subtitle {
+    .jumbotron__header {
+      background: none;
       margin-bottom: 0;
-    }
-
-    .wrapper__header {
-      margin-bottom: 1rem;
-
-      ${mediaQueries(450)`
-        br {
-          display: none;
-        }
-      `}
     }
 
     .container {
-      display: flex;
-      justify-content: center;
-      flex-flow: column;
-      align-items: center;
+      width: 50%;
+      margin-left: 3rem;
     }
 
-    .btn-contact {
+    .gatsby-image-wrapper {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  /* TESTIMONIALS */
+  .jumbotron--testimonials {
+    padding: 9rem 3rem;
+
+    .quote {
       position: relative;
-      width: 20rem;
-      height: 5.6rem;
-      margin-bottom: 4rem;
-      /* padding-right: 2.6rem; */
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: ${lightblue};
-      color: ${black};
-      font-size: 1.6rem;
-      text-decoration: none;
-      text-transform: uppercase;
+      font-size: 2rem;
+      line-height: 3.2rem;
+      text-align: center;
+      padding: 0 2rem;
+
+      &::before, &::after {
+        content: '“';
+        position: absolute;
+        left: -5rem;
+        top: 50%;
+        transform: translateY(-50%);
+        color: ${colors.blue};
+        font-size: 10rem;
+        font-weight: 900;
+      }
 
       &::after {
-        /* content: ''; */
-        position: absolute;
-        width: 2.2rem;
-        height: 2.2rem;
-        top: 1.6rem;
-        right: 2.2rem;
-        background-image: ${svgs.mail(black)};
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center;
+        left: auto;
+        right: -5rem;
+        content: '”';
       }
     }
   }
 
-  .spaceinvaders {
-    display: flex;
-    flex-flow: column;
-
-    .game-info {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 1rem;
-    }
-
-    .btn-play {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 1rem 4rem;
-      text-transform: uppercase;
-      font-size: 1.4rem;
-      background: ${lightgreen};
-      color: ${black};
-    }
-
-    .high-score {
-      font-size: 1.3rem;
-      font-weight: bold;
-    }
-
-    .btn-play.is-playing {
-
-      .play {
-        display: none;
-      }
-    }
-  }
-
-  .spaceinvaders .game {
-    width: 30rem;
-    height: 30rem;
+  /* Gallery */
+  .jumbotron--gallery {
     display: flex;
     flex-flow: row wrap;
-    background: white;
-    box-sizing: content-box;
+    justify-content: center;
 
-    .block {
-      width: 2rem;
-      height: 2rem;
-      position: relative;
-      background-size: contain;
-      background-repeat: no-repeat;
+    img {
+      width: 33.3%;
+      height: 45vh;
+      object-fit: cover;
 
-      &.laser::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 50%;
-        transform: translate(-50%);
-        width: .8rem;
-        height: .8rem;
-        border-radius: .4rem;
-        background-color: ${primary};
-      }
-    }
+      ${mediaQueries(`md`)`
+        width: 50%;
+      `}
 
-    .shooter {
-      background-image: ${svgs.shooter(black)};
-    }
-
-    .invader {
-      background-image: ${svgs.invader(black)};
-    }
-
-    .boom {
-
-      &::after {
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 0;
-        bottom: 0;
-        right: 0;
+      ${mediaQueries(`sm`)`
         width: 100%;
-        height: 100%;
-        background-image: ${svgs.dead(primary)};
-        background-repeat: no-repeat;
-        background-size: contain;
-      }
+        height: 30rem;
+      `}
     }
   }
+
 `;

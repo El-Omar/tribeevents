@@ -1,11 +1,11 @@
 export const variables = {  
   colors: {
-    primary: `#f24738`,
-    secondary: `#1acbbf`,
     black: `#1c1b20`,
-    light: `#f8f8f8`,
-    lightblue: `#9cdeff`,
-    lightgreen: `#6de8ab`
+    light: `#ececec`,
+    orange: `#eb6937`,
+    green: `#489c60`,
+    blue: `#3fa1d7`,
+    yellow: `#f9c432`,
   },
 
   spacing: {
@@ -13,9 +13,7 @@ export const variables = {
   },
 
   fonts: {
-    heading: `Khula`,
-    italic: `Libre Baskerville`,
-    script: `Dancing Script`,
+    heading: `Lato`,
     body: `Montserrat`
   },
 
@@ -40,6 +38,10 @@ export const variables = {
     mail: (color = this.colors.primary) => (
       `url("data:image/svg+xml,%0A%3Csvg width='60px' height='45px' viewBox='0 0 60 45' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cg id='Page-1' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E%3Cpath d='M60,45 L60,0 L0,0.107313196 L0,44.8569157 L60,45 Z M55.5635063,7.79809221 L55.6708408,37.845787 L40.7871199,22.8934817 L55.5635063,7.79809221 Z M7.65652952,40.8505564 L22.3971377,25.5763116 L25.1520572,28.6526232 C28.4197973,31.490461 31.6756112,31.5500795 34.9194991,28.8314785 L37.7101968,25.9697933 L52.5581395,40.9578696 L7.65652952,40.8505564 Z M19.2844365,22.6430843 L4.32915921,37.7027027 L4.50805009,7.69077901 L19.2844365,22.6430843 Z M32.236136,25.1828299 C30.8765653,26.3751987 29.5169946,26.3751987 28.157424,25.1828299 L7.44186047,4.32829889 L52.9516995,4.32829889 L32.236136,25.1828299 Z' id='Shape' fill='${color.replace(`#`, `%23`)}' fill-rule='nonzero'%3E%3C/path%3E%3C/g%3E%3C/svg%3E")`
     ),
+  },
+
+  transitions: {
+    default: `all .38s cubic-bezier(0.46, 0.03, 0.52, 0.96)`,
   },
 };
 

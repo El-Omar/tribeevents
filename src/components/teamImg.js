@@ -2,12 +2,12 @@ import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
 
-const ElomarImage = () => {
+const TeamImg = () => {
   const data = useStaticQuery(graphql`
     query {
-      placeholderImage: file(relativePath: { eq: "elomar@2x.png" }) {
+      placeholderImage: file(relativePath: { eq: "team-comp.png" }) {
         childImageSharp {
-          fluid(maxWidth: 1104) {
+          fluid(maxWidth: 1645) {
             ...GatsbyImageSharpFluid
           }
         }
@@ -18,4 +18,4 @@ const ElomarImage = () => {
   return <Img fluid={data.placeholderImage.childImageSharp.fluid} />
 }
 
-export default ElomarImage
+export default TeamImg
