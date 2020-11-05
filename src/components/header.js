@@ -1,17 +1,19 @@
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
-import React, { useRef, useState, useEffect } from "react"
+import React, { useRef } from "react"
 import logo from "../assets/images/logo.png";
 import { HeaderStyles } from "../styles/headerStyles";
 
 const Header = ({ onClick, isOpen }) => {
   let $menuBtn = useRef(null);
-  // const [menu, setMenu] = useState(false);
+  const url = typeof window !== 'undefined' ? window.location.pathname : '';
 
   return (
     <HeaderStyles>
       <header className={ `page__header` }>
-        <Link to='/'><img src={logo} alt='Tribe Events' /></Link>
+        <Link to='/'>
+          <img className={url === '/who-we-are' || url === '/contact' ? 'inverted' : ''} src={logo} alt='Tribe Events' />
+        </Link>
         <button 
           className={`menu ${isOpen ? 'opened' : ''}`} 
           ref={$menuBtn} 
@@ -27,24 +29,17 @@ const Header = ({ onClick, isOpen }) => {
       </header>
       <div className={`page__nav__wrapper ${isOpen ? 'opened' : ''}`}>
         <nav className="page__nav">
-          <li className="active"><Link to='/'>Home</Link></li>
-          <li><Link to='/'>Who are we?</Link></li>
-          <li><Link to='/'>Contact</Link></li>
+          <li className={url === '/' ? 'active' : ''}>
+            <Link to='/'>Home</Link>
+          </li>
+          <li className={url === '/who-we-are' ? 'active' : ''}>
+            <Link to='/who-we-are'>Who are we?</Link>
+          </li>
+          <li className={url === '/contact' ? 'active' : ''}>
+            <Link to='/contact'>Contact</Link>
+          </li>
         </nav>
       </div>
-        {/* 
-        <nav className="page__nav">
-          <button className={ `nav__trigger` }>
-            <div className="trigger__line trigger__line--first"></div>
-            <div className="trigger__line trigger__line--second"></div>
-            <div className="trigger__line trigger__line--third"></div>
-          </button>
-          <ul className={ `nav__list nav__list--closed` }>
-            <li className="nav__item"><a href="#definition" title="Definition">Definition</a></li>
-            <li className="nav__item"><a href="#work" title="work">Work</a></li>
-            <li className="nav__item"><a href="#contact" title="contact">Contact</a></li>
-          </ul>
-        </nav> */}
     </HeaderStyles>
   );
 };

@@ -5,13 +5,13 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 // import Elomar from "../assets/images/elomar@2x.png";
 
-// import Img from "gatsby-image";
 import TeamImg from "../components/teamImg";
 import JoinusImg from "../components/joinusImg";
 import step1Img from "../assets/images/step-1.png";
 import step2Img from "../assets/images/step-2.png";
 import step3Img from "../assets/images/step-3.png";
 import step4Img from "../assets/images/step-4.png";
+import testimonialImg from "../assets/images/testimonial.jpg";
 
 //images gallery [Will be deleted]
 import gallery1 from "../assets/images/gallery/gallery1.png";
@@ -71,12 +71,12 @@ const IndexPage = () => {
 
       <section className="jumbotron jumbotron--workflow">
         <header className="jumbotron__header jumbotron__header--center">
-          <h1 className="jumbotron__title">Steps</h1>
+          <h1 className="jumbotron__title">How this works</h1>
         </header>
 
         {/* Wat jij doet */}
         <div className="steps-group steps-group--you">
-          <h2 className="steps-group__title">Wat jij doet</h2>
+          {/* <h2 className="steps-group__title">Wat jij doet</h2> */}
           <div className="steps__wrapper">
             <article className="step">
               <img src={step1Img} alt="Contact"/>
@@ -97,7 +97,7 @@ const IndexPage = () => {
 
         {/* Wat wij doen */}
         <div className="steps-group">
-          <h2 className="steps-group__title">Wat wij doen</h2>
+          {/* <h2 className="steps-group__title">Wat wij doen</h2> */}
           <div className="steps__wrapper">
             <article className="step">
               <img src={step3Img} alt="Selectie"/>
@@ -149,6 +149,12 @@ const IndexPage = () => {
             elk event van ons selecteren. Kortom, we kijken met plezier uit naar een 
             samenwerking van nog vele jaren!!!
           </p>
+          <div className="testimonial__img">
+            <img src={testimonialImg} alt="John" />
+          </div>
+          <strong className="testimonial__name">
+            Marc Desaedeleer, <span className="function">Founder Nar D'Oree</span>
+          </strong>
         </div>
       </section>
 

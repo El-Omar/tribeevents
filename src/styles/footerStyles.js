@@ -4,15 +4,19 @@ import { variables, mediaQueries } from './variables';
 const { colors } = variables;
 
 export const FooterStyles = styled.div`
-  margin-top: 5rem;
-  padding: 3rem;
+  padding: 5rem 3rem;
   background: ${colors.black};
   color: white;
-  font-size: 1.4rem;
+  font-size: 1.8rem;
+  font-family: ${variables.fonts.heading};
 
   .page__footer {
     display: flex;
     flex-flow: row wrap;
+
+    a {
+      color: ${colors.yellow};
+    }
 
     .footer__section {
       width: 33.3%;
@@ -20,16 +24,51 @@ export const FooterStyles = styled.div`
       ${mediaQueries(`md`)`
         width: 100%;
       `}
+
+      &--social {
+        text-align: right;
+
+        a img {
+          filter: invert(1);
+        }
+
+        a {
+          padding: 0 1rem;
+        }
+      }
     }
 
     .footer__nav {
+      display: flex;
+      flex-flow: column;
+      align-items: center;
       list-style: none;
       color: white;
 
+      li {
+        margin: 1rem 0;
+      }
+
       a {
-        color: inherit;
         text-decoration: none;
       }
     }
+
+    address {
+      margin-top: 1.2rem;
+      line-height: 2.6rem;
+    }
+
+    ${mediaQueries(`md`)`
+      .footer__section--social {
+        order: -1;
+        padding-bottom: 2rem;
+      }
+      
+      .footer__section {
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+    `}
   }
 `;

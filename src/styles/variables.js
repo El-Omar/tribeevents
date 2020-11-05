@@ -18,8 +18,8 @@ export const variables = {
   },
 
   breakpoints: {
-    xl: 2200,
-    lg: 1300,
+    xl: 2000,
+    lg: 1200,
     md: 768,
     sm: 600,
     xs: 400

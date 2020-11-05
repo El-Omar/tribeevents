@@ -35,11 +35,18 @@ export const Container = styled.div`
     font-weight: 900;
     font-family: ${heading};
     text-transform: uppercase;
+
+    ${mediaQueries(`lg`)`
+      font-size: 4rem;
+    `}
+
+    ${mediaQueries(`md`)`
+      font-size: 3.6rem;
+    `}
   }
 
   .jumbotron {
     position: relative;
-    /* padding: 6rem 3rem; */
   }
 
   .jumbotron__image {
@@ -86,30 +93,31 @@ export const Container = styled.div`
     width: 100%;
     margin-left: auto;
     margin-right: auto;
-    padding: 3rem;
-
-    ${mediaQueries(`576`, { feature: `min-width` })`
-      max-width: 540px;
+    
+    ${mediaQueries(`1921`)`
+      max-width: 1880px;
     `}
-
-    ${mediaQueries(`768`, { feature: `min-width` })`
-      max-width: 720px;
+  
+    ${mediaQueries(`1200`)`
+      max-width: 1140px;
     `}
-
-    ${mediaQueries(`992`, { feature: `min-width` })`
+  
+    ${mediaQueries(`992`)`
       max-width: 960px;
     `}
 
-    ${mediaQueries(`1200`, { feature: `min-width` })`
-      max-width: 1140px;
+    ${mediaQueries(`768`)`
+      max-width: 720px;
+      padding: 1.5rem;
     `}
-
-    ${mediaQueries(`1921`, { feature: `min-width` })`
-      max-width: 1880px;
+  
+    ${mediaQueries(`576`)`
+      max-width: 540px;
     `}
   }
 
   .jumbotron--welcome {
+    overflow: hidden;
 
     .container {
       max-width: 40rem;
@@ -123,12 +131,66 @@ export const Container = styled.div`
       width: 85%;
       margin-left: auto;
     }
+
+    ${mediaQueries(`lg`)`
+      .container {
+        top: 60%;
+      }
+
+      .gatsby-image-wrapper {
+        width: 70%;
+        transform: translateX(10%);
+      }
+    `}
+
+    ${mediaQueries(`1000`)`
+      .container {
+        padding: 0;
+      }
+      
+      .gatsby-image-wrapper {
+        width: 75rem;
+        transform: translateX(20%);
+      }
+
+      .description {
+        text-shadow: 1px 1px white;
+      }
+    `}
+
+    ${mediaQueries(`md`)`    
+      .gatsby-image-wrapper {
+        width: 65rem;
+        transform: translateX(30%);
+      }
+    `}
+
+    ${mediaQueries(`sm`)`
+      .gatsby-image-wrapper {
+        width: 70rem;
+        transform: translateX(25%);
+        position: absolute !important;
+        top: 0;
+        bottom: 0;
+      }
+
+      .container {
+        position: relative;
+        margin-left: 0;
+        transform: none;
+        padding: 15rem 3rem 3rem 0;
+      }
+
+      .description {
+        width: 30rem;
+      }
+    `}
   }
 
   //WORKFLOW / steps
   .jumbotron--workflow {
     background: ${colors.light};
-    padding-bottom: 12rem;
+    padding-bottom: 9rem;
 
     * {
       position: relative;
@@ -136,17 +198,19 @@ export const Container = styled.div`
     }
 
     &::before {
-      content: '';
+      /* content: ''; */
       position: absolute;
-      width: 50%;
+      width: 70%;
       height: 100%;
-      left: 0;
-      background: ${colors.light};
+      left: -20%;
+      background: ${colors.yellow};
       z-index: 1;
+      transform: skewX(20deg);
+      transform-origin: right center;
     }
 
     &::after {
-      content: "+";
+      /* content: "+"; */
       position: absolute;
       left: 50%;
       top: 50%;
@@ -163,7 +227,7 @@ export const Container = styled.div`
 
     .steps-group {
       width: 50%;
-      padding: 3rem;
+      padding: 0 3rem;
       display: inline-block;
       text-align: center;
 
@@ -172,13 +236,17 @@ export const Container = styled.div`
         color: ${colors.black};
       }
 
-      /* &--you .steps-group__title {
-        color: ${colors.black};
-      } */
+      ${mediaQueries(`md`)`
+        width: 100%;
+      `}
     }
 
     .steps__wrapper {
       display: flex;
+      justify-content: center;
+      ${mediaQueries(`sm`)`
+        flex-flow: column;
+      `}
     }
 
     .step {
@@ -208,6 +276,7 @@ export const Container = styled.div`
   .jumbotron--join {
     background: ${colors.green};
     display: flex;
+    flex-flow: row wrap;
     justify-content: space-between;
     align-items: center;
     color: white;
@@ -219,12 +288,21 @@ export const Container = styled.div`
 
     .container {
       width: 50%;
-      margin-left: 3rem;
+      padding-left: 3rem;
+
+      ${mediaQueries(`md`)`
+        width: 100%;
+      `} 
     }
 
     .gatsby-image-wrapper {
-      width: 100%;
+      width: 50%;
       height: 100%;
+      margin-left: auto;
+
+      ${mediaQueries(`md`)`
+        width: 100%;
+      `}
     }
   }
 
@@ -237,23 +315,50 @@ export const Container = styled.div`
       font-size: 2rem;
       line-height: 3.2rem;
       text-align: center;
-      padding: 0 2rem;
+      ${mediaQueries(`md`, {feature: 'min-width'})`
+        padding: 0 5rem;
 
-      &::before, &::after {
-        content: '“';
-        position: absolute;
-        left: -5rem;
-        top: 50%;
-        transform: translateY(-50%);
-        color: ${colors.blue};
-        font-size: 10rem;
-        font-weight: 900;
+        &::before, &::after {
+          content: '“';
+          position: absolute;
+          left: -1rem;
+          top: 50%;
+          transform: translateY(-50%);
+          color: ${colors.blue};
+          font-size: 10rem;
+          font-weight: 900;
+        }
+
+        &::after {
+          left: auto;
+          right: -1rem;
+          content: '”';
+        }
+      `}
+    }
+
+    .testimonial__img {
+      width: 10rem;
+      height: 10rem;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 1rem auto 2rem auto;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
       }
+    }
 
-      &::after {
-        left: auto;
-        right: -5rem;
-        content: '”';
+    .testimonial__name {
+      display: block;
+      text-align: center;
+      font-size: 1.6rem;
+
+      .function {
+        font-weight: normal;
+        font-style: italic;
       }
     }
   }
@@ -280,4 +385,73 @@ export const Container = styled.div`
     }
   }
 
+  .jumbotron--banner {
+    height: 70vh;
+    overflow: hidden;
+
+    .jumbotron__header {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translateX(-50%) translateY(-50%);
+      z-index: 5;
+      color: white;
+    }
+  }
+
+  .jumbotron--team {
+    padding: 6rem 3rem;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+
+    .team-member {
+      position: relative;
+      width: 30rem;
+      height: 42rem;
+      margin: 1rem;
+      overflow: hidden;
+      border: 2px solid ${colors.light};
+
+      .team-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .member-info {
+        width: 100%;
+        height: 10rem;
+        padding: 1rem;
+        display: flex;
+        flex-flow: column;
+        position: absolute;
+        bottom: 0;
+        background: rgba(0, 0, 0, .8);
+        color: white;
+        font-size: 1.4rem;
+        line-height: 2.6rem;
+        text-align: center;
+        font-family: ${heading};
+
+        .member-name {
+          font-size: 1.8rem;
+          color: ${colors.yellow};
+        }
+
+        .member-function {
+          font-style: italic;
+          font-weight: normal;
+        }
+
+        .email {
+          color: white;
+        }
+      }
+    }
+  }
+
+  .jumbotron--contact {
+    padding: 3rem;
+  }
 `;

@@ -1,6 +1,9 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import { FooterStyles } from '../styles/footerStyles';
+import fbImg from '../assets/images/facebook.png';
+import instaImg from '../assets/images/instagram.png';
+import inImg from '../assets/images/linkedin.png';
 
 const Footer = () => {
 
@@ -14,16 +17,23 @@ const Footer = () => {
           9000 GENT
           </address>
         </div>
-        <div className="footer__section">
+        <div className="footer__section footer__section--nav">
           <nav className="footer__nav">
             <li><Link to='/'>Home</Link></li>
             <li><Link to='/'>Who we are</Link></li>
             <li><Link to='/'>Contact</Link></li>
           </nav>
         </div>
-        <div className="footer__section">
-          Find us on: <br />
-          [Social Media Icons]
+        <div className="footer__section footer__section--social">
+          <a href="https://www.facebook.com/TribeEventsBE" rel="noreferrer" target="_blank" title="Facebook">
+            <img src={fbImg} alt="Facebook" width="32" />
+          </a>
+          <a href="https://www.instagram.com/tribe__events/" rel="noreferrer" target="_blank" title="Instagram">
+            <img src={instaImg} alt="Instagram" width="32" />
+          </a>
+          <a href="https://www.facebook.com/TribeEventsBE" rel="noreferrer" target="_blank" title="Linkedin">
+            <img src={inImg} alt="Linkedin" width="32" />
+          </a>
         </div>
       </footer>
     </FooterStyles>

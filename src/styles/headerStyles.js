@@ -10,12 +10,20 @@ export const HeaderStyles = styled.div`
   position: absolute;
   width: 100%;
 
+  ${mediaQueries(`sm`)`
+    padding: 2rem;
+  `}
+
   .page__header {
     position: relative;
     z-index: 8;
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
+  }
+
+  .inverted {
+    filter: invert(1);
   }
 
   .page__nav__wrapper {
