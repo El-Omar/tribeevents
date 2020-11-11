@@ -1,9 +1,10 @@
 import React, { useRef, useEffect, useState } from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-// import Elomar from "../assets/images/elomar@2x.png";
 
 import TeamImg from "../components/teamImg";
 import JoinusImg from "../components/joinusImg";
@@ -13,7 +14,6 @@ import step3Img from "../assets/images/step-3.png";
 import step4Img from "../assets/images/step-4.png";
 import testimonialImg from "../assets/images/testimonial.jpg";
 
-//images gallery [Will be deleted]
 import gallery1 from "../assets/images/gallery/gallery1.png";
 import gallery2 from "../assets/images/gallery/gallery2.png";
 import gallery3 from "../assets/images/gallery/gallery3.png";
@@ -25,6 +25,75 @@ import gallery8 from "../assets/images/gallery/gallery8.png";
 import gallery9 from "../assets/images/gallery/gallery9.png";
 
 const IndexPage = () => {
+  if (typeof window !== `undefined`) {
+    gsap.registerPlugin(ScrollTrigger)
+    gsap.core.globals("ScrollTrigger", ScrollTrigger)
+  }
+
+  const $step1 = useRef(null);
+  const $step2 = useRef(null);
+  const $step3 = useRef(null);
+  const $step4 = useRef(null);
+
+  useEffect(() => {
+    
+    gsap.to($step1.current, {
+      scrollTrigger: {
+        trigger: $step1.current,
+        start: 'center 75%',
+        end: 'top 75%',
+        scrub: 1,
+        pin: $step1.current,
+        pinSpacing: true,
+        onLeave: () => {
+          gsap.to($step2.current, {
+            scrollTrigger: {
+              trigger: $step2.current,
+              start: 'center 60%',
+              end: 'top 60%',
+              scrub: 1,
+              pin: $step2.current,
+              onLeave: () => {
+                gsap.to($step3.current, {
+                  scrollTrigger: {
+                    trigger: $step3.current,
+                    start: 'center 50%',
+                    end: 'top 50%',
+                    scrub: 1,
+                    pin: $step3.current,
+                    onLeave: () => {
+                      gsap.to($step4.current, {
+                        scrollTrigger: {
+                          trigger: $step4.current,
+                          start: 'center 40%',
+                          end: 'top 40%',
+                          scrub: 1,
+                          pin: $step4.current,
+                        },
+                        x: 0,
+                        duration: 1,
+                        opacity: 1
+                      })
+                    },
+                  },
+                  x: 0,
+                  duration: 1,
+                  opacity: 1
+                })
+              },
+            },
+            x: 0,
+            duration: 2,
+            opacity: 1
+          })
+        },
+      },
+      x: 0,
+      duration: 1,
+      opacity: 1
+    })
+
+  }, [])
   
   // const data = useStaticQuery(graphql`
   //   { 
@@ -70,51 +139,42 @@ const IndexPage = () => {
       </section>
 
       <section className="jumbotron jumbotron--workflow">
-        <header className="jumbotron__header jumbotron__header--center">
-          <h1 className="jumbotron__title">How this works</h1>
-        </header>
 
-        {/* Wat jij doet */}
-        <div className="steps-group steps-group--you">
-          {/* <h2 className="steps-group__title">Wat jij doet</h2> */}
-          <div className="steps__wrapper">
-            <article className="step">
-              <img src={step1Img} alt="Contact"/>
-              <h3 className="step__title">Contact</h3>
-              <p className="description description--step">
-                Je neemt contact met ons op. Waar kunnen wij jou mee helpen?
-              </p>
-            </article>
-            <article className="step">
-              <img src={step2Img} alt="Beschrijf"/>
-              <h3 className="step__title">Beschrijf</h3>
-              <p className="description description--step">
-                Beschrijf jouw event. Wat, waar, wanneer en het aantal bezoekers.
-              </p>
-            </article>
+        <div className="steps__content">
+          <header className="jumbotron__header jumbotron__header--center">
+            <h1 className="jumbotron__title">How this works</h1>
+          </header>
+            <div className="steps__wrapper">
+              <article className="step step--1" ref={$step1}>
+                <img src={step1Img} alt="Contact"/>
+                <h3 className="step__title">Contact</h3>
+                <p className="description description--step">
+                  Je neemt contact met ons op. Waar kunnen wij jou mee helpen?
+                </p>
+              </article>
+              <article className="step step--2" ref={$step2}>
+                <img src={step2Img} alt="Beschrijf"/>
+                <h3 className="step__title">Beschrijf</h3>
+                <p className="description description--step">
+                  Beschrijf jouw event. Wat, waar, wanneer en het aantal bezoekers.
+                </p>
+              </article>
+              <article className="step step--3" ref={$step3}>
+                <img src={step3Img} alt="Selectie"/>
+                <h3 className="step__title">Selectie</h3>
+                <p className="description description--step">
+                  Wij selecteren het perfecte team voor jouw project!
+                </p>
+              </article>
+              <article className="step step--4" ref={$step4}>
+                <img src={step4Img} alt="Support"/>
+                <h3 className="step__title">Support</h3>
+                <p className="description description--step">
+                  Beschrijf jouw event. Wat, waar, wanneer en het aantal bezoekers.
+                </p>
+              </article>
+            </div>
           </div>
-        </div>
-
-        {/* Wat wij doen */}
-        <div className="steps-group">
-          {/* <h2 className="steps-group__title">Wat wij doen</h2> */}
-          <div className="steps__wrapper">
-            <article className="step">
-              <img src={step3Img} alt="Selectie"/>
-              <h3 className="step__title">Selectie</h3>
-              <p className="description description--step">
-                Wij selecteren het perfecte team voor jouw project!
-              </p>
-            </article>
-            <article className="step">
-              <img src={step4Img} alt="Support"/>
-              <h3 className="step__title">Support</h3>
-              <p className="description description--step">
-                Beschrijf jouw event. Wat, waar, wanneer en het aantal bezoekers.
-              </p>
-            </article>
-          </div>
-        </div>
       </section>
 
       <section className="jumbotron jumbotron--join">

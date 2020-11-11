@@ -6,6 +6,7 @@ export const variables = {
     green: `#489c60`,
     blue: `#3fa1d7`,
     yellow: `#f9c432`,
+    red: `#da2828`,
   },
 
   spacing: {

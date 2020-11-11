@@ -45,6 +45,22 @@ export const Container = styled.div`
     `}
   }
 
+  h2 {
+    margin-bottom: 1rem;
+    font-size: 3.6rem;
+    font-weight: 900;
+    font-family: ${heading};
+    text-transform: uppercase;
+
+    ${mediaQueries(`lg`)`
+      font-size: 3rem;
+    `}
+
+    ${mediaQueries(`md`)`
+      font-size: 2.6rem;
+    `}
+  }
+
   .jumbotron {
     position: relative;
   }
@@ -191,6 +207,7 @@ export const Container = styled.div`
   .jumbotron--workflow {
     background: ${colors.light};
     padding-bottom: 9rem;
+    min-height: 60vh;
 
     * {
       position: relative;
@@ -225,34 +242,60 @@ export const Container = styled.div`
       padding-bottom: 2rem;
     }
 
-    .steps-group {
-      width: 50%;
-      padding: 0 3rem;
-      display: inline-block;
-      text-align: center;
-
-      &__title {
-        font-size: 3rem;
-        color: ${colors.black};
-      }
-
-      ${mediaQueries(`md`)`
-        width: 100%;
-      `}
-    }
-
     .steps__wrapper {
+      width: 100%;
+      padding: 3rem;
+      margin-top: 6rem;
+      overflow-x: hidden;
       display: flex;
       justify-content: center;
+      align-items: stretch;
+      text-align: center;
+
       ${mediaQueries(`sm`)`
-        flex-flow: column;
+      flex-flow: column;
       `}
     }
-
+    
     .step {
+      height: 100%;
+      margin: 2rem;
+      padding: 1.5rem .5rem;
       display: flex;
       flex-flow: column;
       align-items: center;
+      background: white;
+      opacity: 0;
+      border-radius: 1rem;
+      transform: translateX(100%);
+
+      &::after {
+        content: "1";
+        width: 4rem;
+        height: 4rem;
+        position: absolute;
+        left: -2rem;
+        top: -2rem;
+        border-radius: 50%;
+        background: ${colors.black};
+        color: white;
+        font-size: 2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      &--2::after {
+        content: '2';
+      }
+
+      &--3::after {
+        content: '3';
+      }
+
+      &--4::after {
+        content: '4';
+      }
 
       img {
         width: 20rem;
@@ -268,6 +311,7 @@ export const Container = styled.div`
       .description--step {
         font-size: 1.6rem;
         line-height: 2.4rem;
+        max-width: 30rem;
       }
     }
   }
@@ -386,8 +430,27 @@ export const Container = styled.div`
   }
 
   .jumbotron--banner {
-    height: 70vh;
+    height: 60vh;
     overflow: hidden;
+    position: relative;
+
+    &.overlay {
+
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, .5);
+        z-index: 2;
+      }
+    }
+
+    ${mediaQueries(`sm`)`
+      height: 45vh;
+    `}
 
     .jumbotron__header {
       position: absolute;
@@ -396,6 +459,11 @@ export const Container = styled.div`
       transform: translateX(-50%) translateY(-50%);
       z-index: 5;
       color: white;
+    }
+
+    .gatsby-image-wrapper {
+      height: 100%;
+      z-index: 2;
     }
   }
 
@@ -453,5 +521,64 @@ export const Container = styled.div`
 
   .jumbotron--contact {
     padding: 3rem;
+    text-align: center;
+
+    .description {
+      margin-left: auto;
+      margin-right: auto;
+    }
   }
+
+  .form-wrapper {
+    background: ${colors.light};
+    margin: 3rem auto;
+    font-size: 1.4rem;
+    padding: 3rem;
+    text-align: left;
+  }
+
+  .form-field {
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    margin-bottom: 2.4rem;
+
+    input, select, textarea {
+      margin: .5rem 0;
+      padding: .5rem;
+      border: none;
+      outline: none;
+      resize: none;
+    }
+    
+    input, select {
+      height: 3rem;
+    }
+
+    label {
+      font-weight: bold;
+      text-transform: uppercase;
+      font-size: 1.2rem;
+    }
+
+    .form-field__error {
+      color: ${colors.red};
+      font-weight: bold;
+    }
+  }
+
+  .btn--submit {
+    margin-left: auto;
+    padding: 1rem;
+    border-radius: 0;
+    font-size: 1.6rem;
+    background: ${colors.blue};
+    color: white;
+
+    &:hover {
+      background: ${colors.black};
+      filter: none;
+    }
+  }
+
 `;
