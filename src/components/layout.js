@@ -16,9 +16,13 @@ const Layout = props => {
   const [loading, setLoading] = useState(true);
 
   if (typeof window !== 'undefined') {
-    document.fonts.onloadingdone = function () {
+    // document.fonts.onloadingdone = function () {
+    //   setLoading(false);
+    // };
+
+    setTimeout(() => {
       setLoading(false);
-    };
+    }, 4000);
   }
 
   const data = useStaticQuery(graphql`
