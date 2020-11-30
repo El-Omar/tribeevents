@@ -2,7 +2,7 @@ import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
 
-const TeamImg = () => {
+const TeamImg = ({ onLoad }) => {
   const data = useStaticQuery(graphql`
     query {
       placeholderImage: file(relativePath: { eq: "team-comp.png" }) {
@@ -21,6 +21,7 @@ const TeamImg = () => {
       objectFit: "cover",
       objectPosition: "0 50%",
     }}
+    onLoad={onLoad}
   />
 }
 

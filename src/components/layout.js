@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 
+import Loader from "../components/loader";
 import Header from "./header"
 import Footer from "./footer"
 
@@ -10,8 +11,15 @@ import "../styles/reset.css";
 import "../styles/base.css";
 import { Container } from "../styles/styles";
 
-const Layout = ({ children }) => {
+const Layout = props => {
   const [menu, setMenu] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  if (typeof window !== 'undefined') {
+    document.fonts.onloadingdone = function () {
+      setLoading(false);
+    };
+  }
 
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
@@ -24,10 +32,13 @@ const Layout = ({ children }) => {
   `);
 
   return (
-    <Container className={menu ? 'no-scroll' : ''}>
+    <Container className={menu || loading ? 'no-scroll' : ''}>
+      { loading && <Loader /> }
+      {/* <Loader /> */}
       <Header siteTitle={data.site.siteMetadata.title} onClick={() => setMenu(isOpen => !isOpen)} isOpen={menu} />
       <main className={ 'content' }>
-        {children}
+        {/* { props.children({ ...props, isFontLoaded: isFontLoaded }) } */}
+        { props.children }
       </main>
       <Footer />
     </Container>

@@ -1,9 +1,11 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import { FooterStyles } from '../styles/footerStyles';
+
 import fbImg from '../assets/images/facebook.png';
 import instaImg from '../assets/images/instagram.png';
 import inImg from '../assets/images/linkedin.png';
+import twImmg from '../assets/images/twitter.png';
 
 const Footer = () => {
 
@@ -31,7 +33,10 @@ const Footer = () => {
           <a href="https://www.instagram.com/tribe__events/" rel="noreferrer" target="_blank" title="Instagram">
             <img src={instaImg} alt="Instagram" width="32" />
           </a>
-          <a href="https://www.facebook.com/TribeEventsBE" rel="noreferrer" target="_blank" title="Linkedin">
+          <a href="https://twitter.com/tribeevents1" rel="noreferrer" target="_blank" title="Twitter">
+            <img src={twImmg} alt="Twitter" width="32" />
+          </a>
+          <a href="https://www.linkedin.com/company/tribe-events/" rel="noreferrer" target="_blank" title="Linkedin">
             <img src={inImg} alt="Linkedin" width="32" />
           </a>
         </div>
