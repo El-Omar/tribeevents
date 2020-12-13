@@ -205,9 +205,10 @@ export const Container = styled.div`
 
   //WORKFLOW / steps
   .jumbotron--workflow {
-    background: ${colors.light};
+    /* background: ${colors.light}; */
     padding-bottom: 9rem;
     min-height: 60vh;
+    border-top: .5rem solid ${colors.yellow};
 
     * {
       position: relative;
@@ -244,66 +245,101 @@ export const Container = styled.div`
 
     .steps__wrapper {
       width: 100%;
-      padding: 3rem;
       margin-top: 6rem;
-      overflow-x: hidden;
-      display: flex;
-      justify-content: center;
-      align-items: stretch;
-      text-align: center;
 
       ${mediaQueries(`sm`)`
       flex-flow: column;
       `}
     }
     
+
     .step {
-      height: 100%;
-      margin: 2rem;
-      padding: 1.5rem .5rem;
+      padding: 3rem;
+      padding-top: 5%;
+      padding-bottom: 15%;
       display: flex;
-      flex-flow: column;
+      justify-content: center;
       align-items: center;
-      background: white;
-      /* opacity: 0; */
-      border-radius: 1rem;
-      /* transform: translateX(100%); */
+      position: relative;
+      margin-top: -10%;
+
+      &::before {
+        content: "1";
+        position: absolute;
+        width: 10rem;
+        height: 10rem;
+        left: 25%;
+        top: 40%;
+        bottom: 50%;
+        transform: translateY(-50%);
+        font-size: 10rem;
+        font-weight: bold;
+        z-index: 2;
+        opacity: .75;
+      }
 
       &::after {
-        content: "1";
-        width: 4rem;
-        height: 4rem;
+        content: "";
+        width: 100%;
+        height: 100%;
         position: absolute;
-        left: -2rem;
-        top: -2rem;
-        border-radius: 50%;
-        background: ${colors.black};
-        color: white;
-        font-size: 2rem;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        background: ${colors.yellow};
+        transform: skewY(-3deg);
+      }
+
+      .content {
+        width: 25rem;
+      }
+
+      &--1 {
+        margin-top: 0;
       }
 
       &--2 {
+        color: white;
 
         &::after {
-          content: '2';
-        } 
+          background: ${colors.green};
+          transform: skewY(3deg);
+        }
+        
+        &::before {
+          content: "2";
+          left: auto;
+          right: 25%;
+        }
       }
 
       &--3 {
 
         &::after {
-          content: '3';
-        } 
+          background: ${colors.blue};
+        }
+        
+        &::before {
+          content: "3";
+        }
       }
 
       &--4 {
+        color: white;
+        padding-bottom: 5%;
 
         &::after {
-          content: '4';
-        } 
+          background: ${colors.red};
+          transform: skewY(3deg);
+        }
+
+        &::before {
+          content: "4";
+          left: auto;
+          right: 25%;
+          top: 55%;
+        }
       }
 
       img {
@@ -314,7 +350,6 @@ export const Container = styled.div`
       &__title {
         font-size: 2.4rem;
         margin-bottom: .6rem;
-        margin-top: -2rem; //images have spaces with them
       }
 
       .description--step {
@@ -377,26 +412,6 @@ export const Container = styled.div`
       line-height: 3.2rem;
       text-align: center;
       padding: 1.5rem;
-      /* ${mediaQueries(`md`, {feature: 'min-width'})`
-        padding: 0 5rem;
-
-        &::before, &::after {
-          content: '“';
-          position: absolute;
-          left: -1rem;
-          top: 50%;
-          transform: translateY(-50%);
-          color: ${colors.blue};
-          font-size: 10rem;
-          font-weight: 900;
-        }
-
-        &::after {
-          left: auto;
-          right: -1rem;
-          content: '”';
-        }
-      `} */
 
       ${mediaQueries(`md`)`
         font-size: 1.6rem;
@@ -404,16 +419,13 @@ export const Container = styled.div`
     }
 
     .testimonial__img {
-      /* width: 10rem; */
+      width: 15rem;
       height: 5rem;
-      /* border-radius: 50%; */
-      /* overflow: hidden; */
       margin: 1rem auto 2rem auto;
 
-      img {
+      .gatsby-image-wrapper {
         width: auto;
         height: 100%;
-        /* object-fit: cover; */
       }
     }
 
@@ -452,6 +464,11 @@ export const Container = styled.div`
       object-fit: cover;
       width: 100%;
       height: 100%;
+    }
+
+    #react-modal-image-img {
+      width: auto;
+      height: auto;
     }
   }
 

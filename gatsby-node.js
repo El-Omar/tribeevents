@@ -7,10 +7,13 @@
 //   return graphql(
 //     `
 //       {
-//         allContentfulProject {
-//           edges {
-//             node {
-//               slug
+//         allContentfulHome(sort: {fields: [createdAt]}) {
+//           nodes {
+//             gallery {
+//               id
+//               fluid(maxWidth: 1000) {
+//                 ...GatsbyContentfulFluid_withWebp
+//               }
 //             }
 //           }
 //         }
@@ -21,14 +24,14 @@
 //       console.log("There's an error getting data from Contentful: ", res.erro);
 //     }
 
-//     const projectTemplate = path.resolve("./src/templates/project.js");
+//     const photoTemplate = path.resolve("./src/templates/gallery.js");
 
-//     res.data.allContentfulProject.edges.forEach(project => {
+//     res.data.allContentfulHome.nodes[0].gallery.forEach(photo => {
 //       createPage({
-//         path: `/projects/${project.node.slug}/`,
-//         component: slash(projectTemplate),
+//         path: `/gallery/${photo.id}/`,
+//         component: slash(photoTemplate),
 //         context: {
-//           slug: project.node.slug
+//           slug: photo.id
 //         }
 //       });
 //     });

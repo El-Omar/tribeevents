@@ -12,7 +12,7 @@ const Footer = () => {
   return (
     <FooterStyles>
       <footer className="page__footer">
-        <div className="footer__section">
+        <div className="footer__section contact-info">
           <strong>Tribe Events</strong> <br/>
           <address>
           Sint-Niklaasstraat 5 Bus 401, <br/>
@@ -39,6 +39,10 @@ const Footer = () => {
           <a href="https://www.linkedin.com/company/tribe-events/" rel="noreferrer" target="_blank" title="Linkedin">
             <img src={inImg} alt="Linkedin" width="32" />
           </a>
+          <div className="phone"> <br/>
+          Tel: <a href="tel:+32 9 311 77 27">+32 9 311 77 27</a> <br/>
+          GSM: <a href="tel:+32 471 45 58 55">+32 471 45 58 55</a>
+          </div>
         </div>
       </footer>
     </FooterStyles>

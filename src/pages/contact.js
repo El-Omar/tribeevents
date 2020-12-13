@@ -8,8 +8,14 @@ import SEO from "../components/seo"
 
 import ContactImg from "../components/contactImg";
 
-const Contact = () => {
+const Contact = (props) => {
   const [isClient, setIsClient] = useState(true);
+
+  useEffect(() => {
+    if (props.location.hash === "#student") {
+      setIsClient(false);
+    }
+  }, [props]);
 
   const validate = values => {
     const errors = {};
@@ -112,7 +118,7 @@ const Contact = () => {
 
                 <div className="form-field">
                   <label htmlFor="role">Je bent een</label>
-                  <Field as="select" name="role" id="role" onChange={e => {
+                  <Field as="select" name="role" id="role" value={isClient ? 'client' : 'student'} onChange={e => {
                     setIsClient(e.target.value === "client");
                     setFieldValue("role", e.target.value);
                     validateForm();

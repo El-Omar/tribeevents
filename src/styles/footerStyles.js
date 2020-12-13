@@ -7,7 +7,8 @@ export const FooterStyles = styled.div`
   padding: 5rem 3rem;
   background: ${colors.black};
   color: white;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
+  line-height: 2.6rem;
   font-family: ${variables.fonts.heading};
 
   .page__footer {
@@ -16,6 +17,10 @@ export const FooterStyles = styled.div`
 
     a {
       color: ${colors.yellow};
+    }
+
+    .contact-info a {
+      /* color: white; */
     }
 
     .footer__section {
@@ -56,7 +61,6 @@ export const FooterStyles = styled.div`
 
     address {
       margin-top: 1.2rem;
-      line-height: 2.6rem;
     }
 
     ${mediaQueries(`md`)`

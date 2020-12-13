@@ -5,7 +5,7 @@
   "version": "0.1.0",
   "author": "El Omar <hi@elomar.be>",
   "dependencies": {
-    "@contentful/rich-text-react-renderer": "^14.1.1",
+    "@contentful/rich-text-react-renderer": "^14.1.2",
     "@contentful/rich-text-types": "^14.1.1",
     "axios": "^0.21.0",
     "babel-plugin-styled-components": "^1.11.1",
@@ -29,7 +29,9 @@
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-helmet": "^6.1.0",
+    "react-modal-image": "^2.5.0",
     "react-responsive-carousel": "^3.2.10",
+    "reactjs-popup": "^2.0.4",
     "styled-components": "^5.2.0"
   },
   "devDependencies": {

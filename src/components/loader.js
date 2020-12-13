@@ -36,7 +36,7 @@ const Styles = styled.div`
   justify-content: center; 
   align-items: center; 
   z-index: 1000; 
-  background: rgba(255,  255, 255, .96);
+  background: rgba(255,  255, 255, 1);
 `;
 
 export default Loader
