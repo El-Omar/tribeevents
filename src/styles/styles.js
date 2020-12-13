@@ -342,6 +342,12 @@ export const Container = styled.div`
         }
       }
 
+      ${mediaQueries(`sm`)`
+        &::before {
+          content: none;
+        }
+      `} 
+
       img {
         width: 20rem;
         height: 20rem;
