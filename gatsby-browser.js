@@ -3,4 +3,8 @@ export const onInitialClientRender = () => {
     document.getElementById("___loader").style.display = "none";
     document.body.style = "";
   };
+  setTimeout(() => {
+    document.getElementById("___loader").style.display = "none";
+    document.body.style = "";
+  }, 4000)
 }
