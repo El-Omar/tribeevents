@@ -58,6 +58,8 @@ export const HeaderStyles = styled.div`
       font-weight: 900;
 
       li {
+        min-width: 100px;
+        text-align: center;
         padding: 3rem 0;
         color: ${colors.black};
         transition: ${transitions.default};
@@ -70,16 +72,8 @@ export const HeaderStyles = styled.div`
           background-image: url(${require('../assets/images/zigzag.png')});
           background-repeat: no-repeat;
           background-position: center bottom;
-          background-size: contain;
+          background-size: 100px 14px;
           color: ${colors.black};
-        }
-
-        &.home {
-          background-size: 100% 1.2rem;
-        }
-
-        &.who-we-are {
-          background-size: 100% 1.5rem;
         }
 
         a {
