@@ -22,7 +22,7 @@ const Footer = () => {
         <div className="footer__section footer__section--nav">
           <nav className="footer__nav">
             <li><Link to='/'>Home</Link></li>
-            <li><Link to='/who-we-are'>Who we are</Link></li>
+            <li><Link to='/who-we-are'>Who we are?</Link></li>
             <li><Link to='/contact'>Contact</Link></li>
           </nav>
         </div>

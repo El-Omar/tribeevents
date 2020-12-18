@@ -58,7 +58,7 @@ export const HeaderStyles = styled.div`
       font-weight: 900;
 
       li {
-        padding: 3rem;
+        padding: 3rem 0;
         color: ${colors.black};
         transition: ${transitions.default};
 
@@ -72,6 +72,14 @@ export const HeaderStyles = styled.div`
           background-position: center bottom;
           background-size: contain;
           color: ${colors.black};
+        }
+
+        &.home {
+          background-size: 100% 1.2rem;
+        }
+
+        &.who-we-are {
+          background-size: 100% 1.5rem;
         }
 
         a {

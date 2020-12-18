@@ -52,7 +52,7 @@ const Contact = (props) => {
   return (
     <Layout>
       <SEO title="Contact" />
-      <section className="jumbotron jumbotron--banner overlay">
+      <section className="jumbotron jumbotron--banner overlay" id="student">
         <header className="jumbotron__header jumbotron__header--center">
           <h1 className="jumbotron__title">Get in touch</h1>
         </header>
