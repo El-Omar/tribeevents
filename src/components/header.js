@@ -29,13 +29,13 @@ const Header = ({ onClick, isOpen }) => {
       </header>
       <div className={`page__nav__wrapper ${isOpen ? 'opened' : ''}`}>
         <nav className="page__nav">
-          <li className={`home${url === '/' ? ' active' : ' active'}`}>
+          <li className={`home${url === '/' ? ' active' : ''}`}>
             <Link to='/'>Home</Link>
           </li>
-          <li className={`who-we-are${url === '/who-we-are' ? ' active' : ' active'}`}>
+          <li className={`who-we-are${url === '/who-we-are' ? ' active' : ''}`}>
             <Link to='/who-we-are'>Who are we?</Link>
           </li>
-          <li className={`contact${url === '/contact' ? ' active' : ' active'}`}>
+          <li className={`contact${url === '/contact' ? ' active' : ''}`}>
             <Link to='/contact'>Contact</Link>
           </li>
         </nav>
