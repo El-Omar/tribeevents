@@ -61,6 +61,12 @@ export const FooterStyles = styled.div`
 
     address {
       margin-top: 1.2rem;
+      
+      strong {
+        display: block;
+        margin-top: 1.2rem;
+        font-weight: normal;
+      }
     }
 
     ${mediaQueries(`md`)`

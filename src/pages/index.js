@@ -47,6 +47,7 @@ const IndexPage = (props) => {
         nodes {
           name
           client
+          link
           quote {
             json
           }
@@ -62,6 +63,8 @@ const IndexPage = (props) => {
 
   const home = data.allContentfulHome.nodes[0];
   const testimonials = data.allContentfulTestimonials.nodes;
+
+  console.log(testimonials);
   
   return (
     <Layout>
@@ -160,7 +163,12 @@ const IndexPage = (props) => {
                       { documentToReactComponents(t.quote.json) }
                     </div>
                     <div className="testimonial__img">
-                      <Img fluid={t.logo.fluid} imgStyle={{ objectFit: "contain", objectPosition: "center", }} />
+                      { t.link ? 
+                        <a href={t.link} target="_blank" rel="noreferrer">
+                          <Img fluid={t.logo.fluid} imgStyle={{ objectFit: "contain", objectPosition: "center", }} />
+                        </a> 
+                        : <Img fluid={t.logo.fluid} imgStyle={{ objectFit: "contain", objectPosition: "center", }} /> 
+                      }
                     </div>
                     <strong className="testimonial__name">
                       {t.name}, <span className="function">{t.client}</span>

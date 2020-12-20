@@ -13,16 +13,16 @@ const Footer = () => {
     <FooterStyles>
       <footer className="page__footer">
         <div className="footer__section contact-info">
-          <strong>Tribe Events</strong> <br/>
+          <strong>Tribe Events</strong>
           <address>
-          Sint-Niklaasstraat 5 Bus 401, <br/>
-          9000 GENT
+            <strong>Sint-Niklaasstraat 5 Bus 401</strong>
+            <strong>9000 Gent</strong>
           </address>
         </div>
         <div className="footer__section footer__section--nav">
           <nav className="footer__nav">
             <li><Link to='/'>Home</Link></li>
-            <li><Link to='/who-we-are'>Who we are?</Link></li>
+            <li><Link to='/who-we-are'>Who are we?</Link></li>
             <li><Link to='/contact'>Contact</Link></li>
           </nav>
         </div>
