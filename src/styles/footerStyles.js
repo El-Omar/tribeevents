@@ -1,15 +1,33 @@
 import React from 'react';
 import styled from 'styled-components';
+import pattern from "../assets/images/pattern-footer.png";
 import { variables, mediaQueries } from './variables';
 const { colors } = variables;
 
+
 export const FooterStyles = styled.div`
-  padding: 5rem 3rem;
-  background: ${colors.black};
+  padding: 3rem;
+  margin-top: 5rem;
+  position: relative;
+  background-color: ${colors.black};
   color: white;
   font-size: 1.6rem;
   line-height: 2.6rem;
   font-family: ${variables.fonts.heading};
+
+  &::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 3rem;
+    left: 0;
+    right: 0;
+    top: -3rem;
+    background-image: url(${pattern});
+    background-repeat: repeat-x;
+    background-position: left top;
+    background-size: auto 6rem;
+  }
 
   .page__footer {
     display: flex;
@@ -17,10 +35,6 @@ export const FooterStyles = styled.div`
 
     a {
       color: ${colors.yellow};
-    }
-
-    .contact-info a {
-      /* color: white; */
     }
 
     .footer__section {
@@ -40,6 +54,16 @@ export const FooterStyles = styled.div`
         a {
           padding: 0 1rem;
         }
+      }
+    }
+
+    .copyright {
+      width: 100%;
+      margin-top: 4rem;
+      text-align: center;
+
+      p {
+        margin-bottom: 0;
       }
     }
 

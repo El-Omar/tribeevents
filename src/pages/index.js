@@ -63,8 +63,6 @@ const IndexPage = (props) => {
 
   const home = data.allContentfulHome.nodes[0];
   const testimonials = data.allContentfulTestimonials.nodes;
-
-  console.log(testimonials);
   
   return (
     <Layout>

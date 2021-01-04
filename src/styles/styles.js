@@ -579,11 +579,25 @@ export const Container = styled.div`
   }
 
   .form-wrapper {
-    background: ${colors.light};
     margin: 3rem auto;
-    font-size: 1.4rem;
     padding: 3rem;
+    position: relative;
+    background: ${colors.light};
     text-align: left;
+    font-size: 1.4rem;
+
+    &.submitted {
+      background: #e8ffef;
+    }
+  }
+
+  .sent {
+    text-align: center;
+    
+    h3 {
+      font-size: 2.4rem;
+      color: ${colors.green};
+    }
   }
 
   .form-field {
@@ -628,6 +642,10 @@ export const Container = styled.div`
     &:hover {
       background: ${colors.black};
       filter: none;
+    }
+
+    &.disabled {
+      background: ${colors.gray};
     }
   }
 

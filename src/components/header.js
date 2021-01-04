@@ -12,7 +12,7 @@ const Header = ({ onClick, isOpen }) => {
     <HeaderStyles>
       <header className={ `page__header` }>
         <Link to='/'>
-          <img className={url === '/who-we-are' || url === '/contact' ? 'inverted' : ''} src={logo} alt='Tribe Events' />
+          <img className={url === '/who-we-are' || url === '/who-we-are/' || url === '/contact' || url === '/contact/' ? 'inverted' : ''} src={logo} alt='Tribe Events' />
         </Link>
         <button 
           className={`menu ${isOpen ? 'opened' : ''}`} 
@@ -32,10 +32,10 @@ const Header = ({ onClick, isOpen }) => {
           <li className={`home${url === '/' ? ' active' : ''}`}>
             <Link to='/'>Home</Link>
           </li>
-          <li className={`who-we-are${url === '/who-we-are' ? ' active' : ''}`}>
+          <li className={`who-we-are${url === '/who-we-are' || url === '/who-we-are/' ? ' active' : ''}`}>
             <Link to='/who-we-are'>Who are we?</Link>
           </li>
-          <li className={`contact${url === '/contact' ? ' active' : ''}`}>
+          <li className={`contact${url === '/contact' || url === '/contact/' ? ' active' : ''}`}>
             <Link to='/contact'>Contact</Link>
           </li>
         </nav>

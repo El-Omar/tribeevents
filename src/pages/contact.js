@@ -1,15 +1,16 @@
-import React, { useRef, useEffect, useState } from "react"
-import { useStaticQuery, graphql, Link } from "gatsby"
+import React, { useEffect, useState } from "react"
 import { Formik, Field } from "formik";
 import axios from "axios";
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import Loader from "../components/loader"
 
 import ContactImg from "../components/contactImg";
 
 const Contact = (props) => {
   const [isClient, setIsClient] = useState(true);
+  const [hasSubmitted, setHasSubmitted] = useState(false);
 
   useEffect(() => {
     if (props.location.hash === "#student") {
@@ -37,6 +38,14 @@ const Contact = (props) => {
       }
       if (!values.lastname) {
         errors.lastname = 'Verplicht';
+      }
+      
+      if (!values.file) {
+        errors.file = 'Verplicht';
+      } else if (values.file.type.toLowerCase() !== "application/pdf") {
+        errors.file = 'Enkel bestanden met het type PDF zijn toegestaan';
+      } else if (values.file.size > 25000000) {
+        errors.file = 'Maximum toegelaten grootte is 25 MB';
       }
     }
 
@@ -72,7 +81,7 @@ const Contact = (props) => {
           }
         </p>
 
-        <div className="form-wrapper">
+        <div className={`form-wrapper${hasSubmitted ? " submitted" : ""}`}>
           <Formik
             initialValues={{ 
               role: 'client',
@@ -82,103 +91,137 @@ const Contact = (props) => {
               phone: '',  
               email: '', 
               msg: '',
+              file: '',
             }}
             validate={validate}
             onSubmit={(values, { setSubmitting }) => {
               setSubmitting(true);
+
+              const formData = new FormData();
+              formData.append("role", values.role);
+              formData.append("phone", values.phone);
+              formData.append("email", values.email);
+              formData.append("msg", values.msg);
+
+              if (isClient) {
+                formData.append("companyname", values.companyname);
+              } else {
+                formData.append("firstname", values.firstname);
+                formData.append("lastname", values.lastname);
+                formData.append("file", values.file);
+              }
+              
               axios
                 .post(
-                  "https://getform.io/f/33592cfe-e276-4f84-8579-d52be680a6f0",
-                  values,
+                  "https://getform.io/f/24aa63e3-9585-4bf7-b385-500771021541",
+                  formData,
                   { headers: { Accept: "application/json" } }
                 )
                 .then(function(response) {
-                  console.log(response);
+                  console.log("success? ", response);
+                  setHasSubmitted(true);
+                  setSubmitting(false);
                 })
                 .catch(function(error) {
-                  console.log(error);
+                  console.log("errors: ", error);
                 });
             }}
           >
             {({
-              values,
               errors,
               touched,
-              handleChange,
-              handleBlur,
               handleSubmit,
               isSubmitting,
-              submitForm,
               setFieldValue,
-              setFieldError,
-              resetForm,
-              validateForm,
+              validateForm
             }) => (
-              <form onSubmit={handleSubmit} method="POST">
-
-                <div className="form-field">
-                  <label htmlFor="role">Je bent een</label>
-                  <Field as="select" name="role" id="role" value={isClient ? 'client' : 'student'} onChange={e => {
-                    setIsClient(e.target.value === "client");
-                    setFieldValue("role", e.target.value);
-                    validateForm();
-                  }}>
-                    <option value="client">Klant</option>
-                    <option value="student">Student</option>
-                  </Field>
-                  <span className="form-field__error">{errors.role && touched.role && errors.role}</span>
-                </div>
-
-                {
-                  isClient && (
+              <>
+                { isSubmitting && <Loader /> }
+                { hasSubmitted && (
+                  <div className="sent">
+                    <h3>Uw bericht werd verzonden!</h3>
+                    <p className="description">
+                     We nemen zo spoedig mogelijk contact met u op.
+                    </p>
+                  </div>
+                ) }
+                { !hasSubmitted && (
+                  <form onSubmit={handleSubmit} method="POST" encType="multipart/form-data">
                     <div className="form-field">
-                      <label htmlFor="companyname">Bedrijfsnaam *</label>
-                      <Field name="companyname" id="companyname" type="input" />
-                      <span className="form-field__error">{errors.companyname && touched.companyname && errors.companyname}</span>
+                      <label htmlFor="role">Je bent een</label>
+                      <Field as="select" name="role" id="role" value={isClient ? 'client' : 'student'} onChange={e => {
+                        setIsClient(e.target.value === "client");
+                        setFieldValue("role", e.target.value);
+                        validateForm();
+                      }}>
+                        <option value="client">Klant</option>
+                        <option value="student">Student</option>
+                      </Field>
+                      <span className="form-field__error">{errors.role && touched.role && errors.role}</span>
                     </div>
-                  )
-                }
 
-                {
-                  !isClient && (
-                    <>
-                      <div className="form-field">
-                        <label htmlFor="firstname">Voornaam *</label>
-                        <Field name="firstname" id="firstname" type="input" />
-                        <span className="form-field__error">{errors.firstname && touched.firstname && errors.firstname}</span>
-                      </div>
-          
-                      <div className="form-field">
-                        <label htmlFor="lastname">Achternaam *</label>
-                        <Field name="lastname" id="lastname" type="input" />
-                        <span className="form-field__error">{errors.lastname && touched.lastname && errors.lastname}</span>
-                      </div>
-                    </>
-                  )
-                }
-    
-                <div className="form-field">
-                  <label htmlFor="phone">Telefoon *</label>
-                  <Field name="phone" id="phone" type="input" />
-                  <span className="form-field__error">{errors.phone && touched.phone && errors.phone}</span>
-                </div>
+                    {
+                      isClient && (
+                        <div className="form-field">
+                          <label htmlFor="companyname">Bedrijfsnaam *</label>
+                          <Field name="companyname" id="companyname" type="input" />
+                          <span className="form-field__error">{errors.companyname && touched.companyname && errors.companyname}</span>
+                        </div>
+                      )
+                    }
 
-                <div className="form-field">
-                  <label htmlFor="email">Email *</label>
-                  <Field name="email" id="email" type="input" />
-                  <span className="form-field__error">{errors.email && touched.email && errors.email}</span>
-                </div>
+                    {
+                      !isClient && (
+                        <>
+                          <div className="form-field">
+                            <label htmlFor="firstname">Voornaam *</label>
+                            <Field name="firstname" id="firstname" type="input" />
+                            <span className="form-field__error">{errors.firstname && touched.firstname && errors.firstname}</span>
+                          </div>
+              
+                          <div className="form-field">
+                            <label htmlFor="lastname">Achternaam *</label>
+                            <Field name="lastname" id="lastname" type="input" />
+                            <span className="form-field__error">{errors.lastname && touched.lastname && errors.lastname}</span>
+                          </div>
+                        </>
+                      )
+                    }
+        
+                    <div className="form-field">
+                      <label htmlFor="phone">Telefoon *</label>
+                      <Field name="phone" id="phone" type="input" />
+                      <span className="form-field__error">{errors.phone && touched.phone && errors.phone}</span>
+                    </div>
 
-                <div className="form-field">
-                  <label htmlFor="msg">Bericht *</label>
-                  <Field name="msg" id="msg" type="input" as="textarea" rows="5" />
-                  <span className="form-field__error">{errors.msg && touched.msg && errors.msg}</span>
-                </div>
+                    <div className="form-field">
+                      <label htmlFor="email">Email *</label>
+                      <Field name="email" id="email" type="input" />
+                      <span className="form-field__error">{errors.email && touched.email && errors.email}</span>
+                    </div>
 
-                <button className="btn btn--submit" type="submit" disabled={isSubmitting}>
-                  Verzenden
-                </button>
-              </form>
+                    <div className="form-field">
+                      <label htmlFor="msg">Bericht *</label>
+                      <Field name="msg" id="msg" type="input" as="textarea" rows="5" />
+                      <span className="form-field__error">{errors.msg && touched.msg && errors.msg}</span>
+                    </div>
+
+                    {
+                      !isClient && (
+                        <div className="form-field">
+                          <label htmlFor="file">CV</label>
+                          <input name="file" id="file" type="file" onChange={ e => setFieldValue("file", e.target.files[0]) } />
+                          <span className="form-field__error">{errors.file && touched.file && errors.file}</span>
+                        </div>
+                      )
+                    }
+
+                    <button className={`btn btn--submit${isSubmitting ? " disabled" : ""}`} type="submit" disabled={isSubmitting}>
+                      Verzenden
+                    </button>
+                  </form>
+                ) }
+              </>
             )}
           </Formik>
         </div>

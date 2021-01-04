@@ -1,5 +1,5 @@
-import React, { useRef, useEffect, useState } from "react"
-import { useStaticQuery, graphql, Link } from "gatsby"
+import React from "react"
+import { useStaticQuery, graphql } from "gatsby"
 import Img from 'gatsby-image';
 
 import Layout from "../components/layout"
@@ -8,7 +8,6 @@ import SEO from "../components/seo"
 import AboutUsImg from "../components/aboutusImg";
 
 const WhoWeAre = () => {
-  
   const data = useStaticQuery(graphql`
     { 
       team: allContentfulTeamMembers(sort: {fields: [createdAt]}) {
@@ -37,8 +36,7 @@ const WhoWeAre = () => {
       </section>
 
       <div className="jumbotron jumbotron--team">
-        {
-          data.team.nodes.map((member, i) => (
+        { data.team.nodes.map((member, i) => (
             <div className="team-member" key={i}>
               <Img className="team-image" fluid={member.image.fluid} alt={member.name} />
               <div className="member-info">
@@ -47,8 +45,7 @@ const WhoWeAre = () => {
                 <a href={`mailto:${member.email}`} className="email">{member.email}</a>
               </div>
             </div>
-          ))
-        }
+        )) }
       </div>
     </Layout>
   )

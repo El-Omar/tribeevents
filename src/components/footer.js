@@ -44,6 +44,11 @@ const Footer = () => {
           GSM: <a href="tel:+32 471 45 58 55">+32 471 45 58 55</a>
           </div>
         </div>
+        <div className="copyright">
+          <p>
+            ©2020 Tribe Group BV • Sint-Niklaasstraat 5 bus 401 • 9000 Gent • 0719.349.030 • RPR Gent
+          </p>
+        </div>
       </footer>
     </FooterStyles>
   )

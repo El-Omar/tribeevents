@@ -28,7 +28,7 @@ const Loader = () => {
 
 const Styles = styled.div`
   width: 100%; 
-  height: 100vh; 
+  height: 100%; 
   position: absolute; 
   left: 0; 
   top: 0; 
@@ -36,7 +36,7 @@ const Styles = styled.div`
   justify-content: center; 
   align-items: center; 
   z-index: 1000; 
-  background: rgba(255,  255, 255, 1);
+  background: rgba(0, 0, 0, .6);
 `;
 
 export default Loader
