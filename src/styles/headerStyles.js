@@ -22,6 +22,12 @@ export const HeaderStyles = styled.div`
     align-items: center;
   }
 
+  .logo {
+    ${mediaQueries(`sm`)`
+      width: 17rem;
+    `}
+  }
+
   .inverted {
     filter: invert(1);
   }

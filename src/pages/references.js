@@ -27,7 +27,7 @@ const References = () => {
   return (
     <Layout>
       <SEO title="References" />
-      <section className="jumbotron jumbotron--banner">
+      <section className="jumbotron jumbotron--banner jumbotron--banner--references">
         <header className="jumbotron__header jumbotron__header--center">
           <h1 className="jumbotron__title">References</h1>
           <p className="description">

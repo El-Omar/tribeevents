@@ -505,7 +505,7 @@ export const Container = styled.div`
   }
 
   .jumbotron--banner {
-    height: 60vh;
+    height: 65vh;
     overflow: hidden;
     position: relative;
 
@@ -524,7 +524,7 @@ export const Container = styled.div`
     }
 
     ${mediaQueries(`sm`)`
-      height: 45vh;
+      height: 55vh;
     `}
 
     .jumbotron__header {
@@ -717,6 +717,17 @@ export const Container = styled.div`
 
       ${mediaQueries(`md`)`
         width: 50%;
+      `}
+    }
+  }
+
+  .jumbotron--banner--references {
+
+    .jumbotron__header  {
+      margin-bottom: 0;
+
+      ${mediaQueries(`md`)`
+        padding-top: 5rem;
       `}
     }
   }

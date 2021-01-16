@@ -1,8 +1,8 @@
-import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React, { useRef, useEffect, useState } from "react"
 import logo from "../assets/images/logo.png";
 import { HeaderStyles } from "../styles/headerStyles";
+import AniLink from "gatsby-plugin-transition-link/AniLink"
 
 const Header = ({ onClick, isOpen }) => {
   let $menuBtn = useRef(null);
@@ -18,9 +18,9 @@ const Header = ({ onClick, isOpen }) => {
   return (
     <HeaderStyles>
       <header className={ `page__header` }>
-        <Link to='/'>
-          <img className={inverted ? 'inverted' : ''} src={logo} alt='Tribe Events' />
-        </Link>
+        <AniLink paintDrip hex='#489c60' to='/'>
+          <img className={`logo ${inverted ? 'inverted' : ''}`} src={logo} alt='Tribe Events' />
+        </AniLink>
         <button 
           className={`menu ${isOpen ? 'opened' : ''}`} 
           ref={$menuBtn} 
@@ -37,16 +37,16 @@ const Header = ({ onClick, isOpen }) => {
       <div className={`page__nav__wrapper ${isOpen ? 'opened' : ''}`}>
         <nav className="page__nav">
           <li className={`home${url === '/' ? ' active' : ''}`}>
-            <Link to='/'>Home</Link>
+            <AniLink paintDrip hex='#489c60' to='/'>Home</AniLink>
           </li>
           <li className={`who-we-are${url === '/who-we-are' || url === '/who-we-are/' ? ' active' : ''}`}>
-            <Link to='/who-we-are'>Who are we?</Link>
+            <AniLink paintDrip hex='#40a1d7' to='/who-we-are'>Who are we?</AniLink>
           </li>
           <li className={`references${url === '/references' || url === '/references/' ? ' active' : ''}`}>
-            <Link to='/references'>References</Link>
+            <AniLink paintDrip hex='#ffc200' to='/references'>References</AniLink>
           </li>
           <li className={`contact${url === '/contact' || url === '/contact/' ? ' active' : ''}`}>
-            <Link to='/contact'>Contact</Link>
+            <AniLink paintDrip hex='#d92828' to='/contact'>Contact</AniLink>
           </li>
         </nav>
       </div>

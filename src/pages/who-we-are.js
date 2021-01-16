@@ -1,6 +1,7 @@
 import React from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
 import Img from 'gatsby-image';
+import AniLink from "gatsby-plugin-transition-link/AniLink"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -59,7 +60,7 @@ const WhoWeAre = () => {
               <p className="description">
                 Een Tribe [stam] is een groep van verschillende mensen met een eigen cultuur die één gemeenschap vormen. Ook bij Tribe Events hechten we veel belang aan diversiteit en samenhorigheid.
               </p>
-              <Link to='/contact' className='btn btn-secondary'>Contact</Link>
+              <AniLink paintDrip hex='#ececec' to='/contact' className='btn btn-secondary'>Contact</AniLink>
               <img className="logo d-md-none" src={logo} alt='Tribe Events' />
             </div>
 

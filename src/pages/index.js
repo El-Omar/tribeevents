@@ -1,6 +1,8 @@
 import React from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
 
+import AniLink from "gatsby-plugin-transition-link/AniLink"
+
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
@@ -80,12 +82,11 @@ const IndexPage = (props) => {
             <p className="description">
               {home.welcomeText.welcomeText}
             </p>
-            <Link to='/contact' className="btn btn-primary">Hire us</Link>
+            <AniLink paintDrip hex='#3fa1d7' to='/contact' className="btn btn-primary">Hire us</AniLink >
           </div>
         </section>
 
         <section className="jumbotron jumbotron--workflow">
-
           <div className="steps__content">
             <header className="jumbotron__header jumbotron__header--center">
               <h1 className="jumbotron__title">How this works</h1>
@@ -143,7 +144,7 @@ const IndexPage = (props) => {
             <p className="description">
               {home.joinUsText.joinUsText}
             </p>
-            <Link to='/contact#student' className='btn btn-secondary'>Join us</Link>
+            <AniLink paintDrip hex='#ececec' to='/contact#student' className='btn btn-secondary'>Join us</AniLink>
           </div>
           <JoinusImg />
         </section>

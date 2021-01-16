@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'gatsby';
+import AniLink from "gatsby-plugin-transition-link/AniLink"
 import { FooterStyles } from '../styles/footerStyles';
 
 import fbImg from '../assets/images/facebook.png';
@@ -25,10 +25,10 @@ const Footer = () => {
         </div>
         <div className="footer__section footer__section--nav">
           <nav className="footer__nav">
-            <li><Link to='/'>Home</Link></li>
-            <li><Link to='/who-we-are'>Who are we?</Link></li>
-            <li><Link to='/references'>References</Link></li>
-            <li><Link to='/contact'>Contact</Link></li>
+            <li><AniLink paintDrip hex='#489c60' to='/'>Home</AniLink></li>
+            <li><AniLink paintDrip hex='#40a1d7' to='/who-we-are'>Who are we?</AniLink></li>
+            <li><AniLink paintDrip hex='#ffc200' to='/references'>References</AniLink></li>
+            <li><AniLink paintDrip hex='#d92828' to='/contact'>Contact</AniLink></li>
           </nav>
         </div>
         <div className="footer__section footer__section--social">
@@ -55,15 +55,15 @@ const Footer = () => {
           </p>
         </div>
         <div className="credit">
-          {/* <a href="https://www.google.com/" rel="noreferrer" target="_blank">
+          {/* <span className="madeby">Made by</span> */}
+          <a href="https://www.charlotteryckeboer.be/" rel="noreferrer" target="_blank">
             <img className="crfoto" src={crImg} alt="CR-Fotografie" />
-          </a> */}
-          <span className="madeby">Made by</span>
-          <a href="http://madebyono.com/" rel="noreferrer" target="_blank">
-            <img className="ono" src={onoImg} alt="Ono" />
           </a>
           <a href="https://www.elomar.be/" rel="noreferrer" target="_blank">
             <img className="elomar" src={elomarImg} alt="El Omar" />
+          </a>
+          <a href="http://madebyono.com/" rel="noreferrer" target="_blank">
+            <img className="ono" src={onoImg} alt="Ono" />
           </a>
         </div>
       </footer>
