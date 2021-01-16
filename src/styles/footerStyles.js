@@ -67,6 +67,31 @@ export const FooterStyles = styled.div`
       }
     }
 
+    .credit {
+      width: 100%;
+      margin-top: 1rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      a, .madeby {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        margin: 0 1rem;
+      }
+
+      img {
+        width: 5rem;
+      }
+
+      .elomar {
+        width: auto;
+        height: 3.5rem;
+      }
+    }
+
     .footer__nav {
       display: flex;
       flex-flow: column;

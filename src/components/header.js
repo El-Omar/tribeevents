@@ -1,18 +1,25 @@
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
-import React, { useRef } from "react"
+import React, { useRef, useEffect, useState } from "react"
 import logo from "../assets/images/logo.png";
 import { HeaderStyles } from "../styles/headerStyles";
 
 const Header = ({ onClick, isOpen }) => {
   let $menuBtn = useRef(null);
-  const url = typeof window !== 'undefined' ? window.location.pathname : '';
+  const [url, setUrl] = useState('');
+  const pagesWithInvertedLogo = ['who-we-are', 'contact', 'references',];
+  const [inverted, setInverted] = useState(false);
+
+  useEffect(() => {
+    setUrl(typeof window !== 'undefined' ? window.location.pathname : '');
+    setInverted(pagesWithInvertedLogo.includes(url.replace(`/`, ``)));
+  }, [pagesWithInvertedLogo, url])
 
   return (
     <HeaderStyles>
       <header className={ `page__header` }>
         <Link to='/'>
-          <img className={url === '/who-we-are' || url === '/who-we-are/' || url === '/contact' || url === '/contact/' ? 'inverted' : ''} src={logo} alt='Tribe Events' />
+          <img className={inverted ? 'inverted' : ''} src={logo} alt='Tribe Events' />
         </Link>
         <button 
           className={`menu ${isOpen ? 'opened' : ''}`} 
@@ -34,6 +41,9 @@ const Header = ({ onClick, isOpen }) => {
           </li>
           <li className={`who-we-are${url === '/who-we-are' || url === '/who-we-are/' ? ' active' : ''}`}>
             <Link to='/who-we-are'>Who are we?</Link>
+          </li>
+          <li className={`references${url === '/references' || url === '/references/' ? ' active' : ''}`}>
+            <Link to='/references'>References</Link>
           </li>
           <li className={`contact${url === '/contact' || url === '/contact/' ? ' active' : ''}`}>
             <Link to='/contact'>Contact</Link>

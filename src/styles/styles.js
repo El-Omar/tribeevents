@@ -4,9 +4,7 @@ import styled from 'styled-components';
 import { variables, mediaQueries } from "./variables";
 
 const { colors } = variables;
-const { spacing } = variables.spacing;
 const { heading, body } = variables.fonts;
-const { svgs } = variables;
 
 export const Container = styled.div`
 
@@ -77,6 +75,34 @@ export const Container = styled.div`
     max-width: 58rem;
   }
 
+  .text-center {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .row {
+    display: flex;
+    flex-flow: row wrap;
+    margin-left: -2rem;
+    margin-right: -2rem;
+  }
+
+  .w-5 {
+    width: 50%;
+    padding: 2rem;
+
+    ${mediaQueries(`md`)`
+      width: 100%;
+    `}
+  }
+
+  .d-md-none {
+    ${mediaQueries(`md`)`    
+      display: none;
+    `}
+  }
+
   .btn {
     max-width: 12rem;
     height: 4rem;
@@ -109,26 +135,26 @@ export const Container = styled.div`
     width: 100%;
     margin-left: auto;
     margin-right: auto;
+    padding: 1.5rem;
     
-    ${mediaQueries(`1921`)`
-      max-width: 1880px;
+    ${mediaQueries(`576`, {feature: "min-width"})`
+      max-width: 540px;
+    `}
+
+    ${mediaQueries(`768`, {feature: "min-width"})`
+      max-width: 720px;
     `}
   
-    ${mediaQueries(`1200`)`
-      max-width: 1140px;
-    `}
-  
-    ${mediaQueries(`992`)`
+    ${mediaQueries(`992`, {feature: "min-width"})`
       max-width: 960px;
     `}
 
-    ${mediaQueries(`768`)`
-      max-width: 720px;
-      padding: 1.5rem;
+    ${mediaQueries(`1200`, {feature: "min-width"})`
+      max-width: 1140px;
     `}
-  
-    ${mediaQueries(`576`)`
-      max-width: 540px;
+
+    ${mediaQueries(`1921`, {feature: "min-width"})`
+      max-width: 1380px;
     `}
   }
 
@@ -674,4 +700,84 @@ export const Container = styled.div`
   .carousel .slide {
     background: none;
   }
+
+  // References
+  .jumbotron--references {
+    padding: 4rem 1rem;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+
+    .rerference {
+      width: 30%;
+      margin: 1rem 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      ${mediaQueries(`md`)`
+        width: 50%;
+      `}
+    }
+  }
+
+  .wrap.wrap--values {
+    margin: 5rem 0;
+
+    ${mediaQueries(`md`)`
+      margin: 2rem 0;
+    `}
+
+    .logo {
+      margin-top: 5rem;
+
+      ${mediaQueries(`md`)`
+        margin-top: 3rem;
+      `}
+    }
+
+    .values {
+      display: flex;
+      flex-flow: row wrap;
+    }
+
+    .value {
+      width: 50%;
+      margin-bottom: 2rem;
+      padding: 0 2rem;
+
+      h3 {
+        position: relative;
+        font-size: 2.4rem;
+      }
+
+      .title__bg {
+        width: 4rem;
+        height: 4rem;
+        position: absolute;
+        left: -2rem;
+        top: -1rem;
+        z-index: -1;
+      }
+
+      p {
+        font-size: 1.6rem;
+        line-height: 2.6rem;
+      }
+
+      .quote {
+        margin-bottom: .5rem;
+        font-style: italic;
+      }
+
+      .text {
+        font-weight: bold; 
+      }
+    }
+  }
+
+  .wrap.wrap--meet {
+    margin-top: 3rem;
+  }
+
 `;
