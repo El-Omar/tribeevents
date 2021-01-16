@@ -40,8 +40,6 @@ const WhoWeAre = () => {
     }
   `);
 
-  console.log(data);
-
   return (
     <Layout>
       <SEO title="Who we are" />
