@@ -1,9 +1,9 @@
 {
-  "name": "elomar-portfolio",
+  "name": "tribe-events",
   "private": true,
-  "description": "Portfolio website for El Omar",
+  "description": "Tribe Events website",
   "version": "0.1.0",
-  "author": "El Omar <hi@elomar.be>",
+  "author": "El Omar <contact@elomar.be>",
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^14.1.2",
     "@contentful/rich-text-types": "^14.1.1",

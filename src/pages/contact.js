@@ -33,13 +33,14 @@ const Contact = (props) => {
         errors.companyname = 'Verplicht';
       }
     } else {
+      //Name validation
       if (!values.firstname) {
         errors.firstname = 'Verplicht';
       }
       if (!values.lastname) {
         errors.lastname = 'Verplicht';
       }
-      
+      //CV Validation
       if (!values.file) {
         errors.file = 'Verplicht';
       } else if (values.file.type.toLowerCase() !== "application/pdf") {
