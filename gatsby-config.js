@@ -84,12 +84,12 @@ module.exports = {
     //     cookieDomain: "www.tribe-events.be",
     //   },
     // },
-    {
-      resolve: "gatsby-plugin-google-tagmanager",
-      options: {
-        id: "G-B629S2Q0BK",
-      },
-    },
+    // {
+    //   resolve: "gatsby-plugin-google-tagmanager",
+    //   options: {
+    //     id: "G-B629S2Q0BK",
+    //   },
+    // },
     // `gatsby-plugin-offline`,
   ],
 }

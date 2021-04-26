@@ -18,6 +18,20 @@ export default function HTML(props) {
         <meta charSet="utf-8" />
         <meta httpEquiv="x-ua-compatible" content="ie=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-B629S2Q0BK"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+        
+                  gtag('config', 'G-B629S2Q0BK');
+                `,
+          }}
+        />
+
         {props.headComponents}
       </head>
       <body {...props.bodyAttributes} style={{ 
