@@ -144,7 +144,7 @@ const IndexPage = (props) => {
             <p className="description">
               {home.joinUsText.joinUsText}
             </p>
-            <AniLink paintDrip hex='#ececec' to='/contact#student' className='btn btn-secondary'>Join us</AniLink>
+            <Link to='/contact#student' className='btn btn-secondary'>Join us</Link>
           </div>
           <JoinusImg />
         </section>
