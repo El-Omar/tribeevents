@@ -7,12 +7,12 @@ import AniLink from "gatsby-plugin-transition-link/AniLink"
 const Header = ({ onClick, isOpen }) => {
   let $menuBtn = useRef(null);
   const [url, setUrl] = useState('');
-  const pagesWithInvertedLogo = ['who-we-are', 'contact', 'references',];
+  const pagesWithInvertedLogo = ['who-we-are', 'contact', 'references', 'jobs',];
   const [inverted, setInverted] = useState(false);
 
   useEffect(() => {
     setUrl(typeof window !== 'undefined' ? window.location.pathname : '');
-    setInverted(pagesWithInvertedLogo.includes(url.replace(`/`, ``)));
+    setInverted(!!pagesWithInvertedLogo.find(page => url.includes(page)));
   }, [pagesWithInvertedLogo, url])
 
   return (
@@ -44,6 +44,9 @@ const Header = ({ onClick, isOpen }) => {
           </li>
           <li className={`references${url === '/references' || url === '/references/' ? ' active' : ''}`}>
             <AniLink paintDrip hex='#ffc200' to='/references'>References</AniLink>
+          </li>
+          <li className={`jobs${url === '/jobs' || url === '/jobs/' ? ' active' : ''}`}>
+            <AniLink paintDrip hex='#ffc200' to='/jobs'>Jobs</AniLink>
           </li>
           <li className={`contact${url === '/contact' || url === '/contact/' ? ' active' : ''}`}>
             <AniLink paintDrip hex='#d92828' to='/contact'>Contact</AniLink>

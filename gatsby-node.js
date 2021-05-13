@@ -1,41 +1,57 @@
-// const path = require('path');
-// const slash = require('slash');
+const path = require('path');
+const slash = require('slash');
+const slugify = require('slugify');
 
-// exports.createPages = ({ graphql, actions }) => {
-//   const { createPage } = actions;
+exports.createPages = ({ graphql, actions }) => {
+  const { createPage } = actions;
 
-//   return graphql(
-//     `
-//       {
-//         allContentfulHome(sort: {fields: [createdAt]}) {
-//           nodes {
-//             gallery {
-//               id
-//               fluid(maxWidth: 1000) {
-//                 ...GatsbyContentfulFluid_withWebp
-//               }
-//             }
-//           }
-//         }
-//       }
-//     `
-//   ).then(res => {
-//     if (res.error) {
-//       console.log("There's an error getting data from Contentful: ", res.erro);
-//     }
+  return graphql(
+    `
+      query {
+        allContentfulJobs {
+          nodes {
+            slogan
+            title
+            id
+            flexDescription {
+              json
+            }
+            flexOffer {
+              json
+            }
+            flexSold {
+              json
+            }
+            studentSold {
+              json
+            }
+            studentOffer {
+              json
+            }
+            studentDescription {
+              json
+            }
+          }
+        }
+      }
+    `
+  ).then(res => {
+    if (res.error) {
+      console.log("There's an error getting data from Contentful: ", res.erro);
+    }
 
-//     const photoTemplate = path.resolve("./src/templates/gallery.js");
+    const template = path.resolve("./src/templates/job.js");
 
-//     res.data.allContentfulHome.nodes[0].gallery.forEach(photo => {
-//       createPage({
-//         path: `/gallery/${photo.id}/`,
-//         component: slash(photoTemplate),
-//         context: {
-//           slug: photo.id
-//         }
-//       });
-//     });
-//   }).catch(err => {
-//     console.log("Error with contentful data: ", err);
-//   });
-// };
+    res.data.allContentfulJobs.nodes.forEach(job => {
+      createPage({
+        path: `/jobs/${job.id}/`,
+        component: slash(template),
+        context: {
+          id: job.id,
+        }
+      });
+    });
+  }).catch(err => {
+    console.log("Error with contentful data: ", err);
+  });
+};

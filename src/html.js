@@ -1,17 +1,8 @@
-import React, { useState } from "react"
+import React from "react"
 import PropTypes from "prop-types"
 
-import Loader from "./components/loader";
-
 export default function HTML(props) {
-  // const [loading, setLoading] = useState(true);
-
-  // if (typeof window !== 'undefined') {
-  //   document.fonts.onloadingdone = function () {
-  //     setLoading(false);
-  //   };
-  // }
-
+  
   return (
     <html {...props.htmlAttributes}>
       <head>

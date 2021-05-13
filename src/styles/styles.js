@@ -88,7 +88,14 @@ export const Container = styled.div`
     margin-right: -2rem;
   }
 
+  .w-10 {
+    width: 100%;
+    padding: 2rem;
+    position: relative;
+  }
+
   .w-5 {
+    position: relative;
     width: 50%;
     padding: 2rem;
 
@@ -604,6 +611,97 @@ export const Container = styled.div`
     }
   }
 
+  .jumbotron--job {
+    padding: 3rem;
+
+    li::marker {
+      color: ${colors.orange};
+    }
+
+    h3 {
+      font-size: 2.4rem;
+    }
+
+    .job--offer {
+      padding: 3rem;
+      background: ${colors.light};
+      margin-bottom: 2rem;
+
+      ${mediaQueries(`md`)`
+        padding: 1.5rem;
+      `}
+    }
+  }
+
+  .jobs__wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  }
+  
+  .job {
+    text-decoration: none;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    padding: 5rem 2rem;
+    flex-flow: column;
+    align-items: center;
+    text-align: center;
+    font-size: 1.8rem;
+    line-height: 2.4rem;
+    text-transform: uppercase;
+    color: ${colors.black};
+
+    .slogan {
+      margin-bottom: 2rem;
+    }
+  }
+
+  .job__wrapper {
+
+    .job {
+      background: ${colors.yellow};
+    }
+
+    &:nth-child(2n) {
+
+      .job {
+        background: ${colors.green};
+      }
+    }
+    
+    &:nth-child(3n) {
+
+      .job {
+        background: ${colors.blue};
+      }
+    }
+  }
+
+  .job-btns__wrap {
+    display: flex;
+    justify-content: center;
+    
+    .btn-job {
+      width: 50%;
+      font-size: 2rem;
+      padding: 2rem 1rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-transform: uppercase;
+      background: ${colors.light};
+
+      &.active {
+        background: ${colors.black};
+        color: white;
+      }
+    }
+  }
+
+
   .form-wrapper {
     margin: 3rem auto;
     padding: 3rem;
@@ -619,6 +717,9 @@ export const Container = styled.div`
 
   .sent {
     text-align: center;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
     
     h3 {
       font-size: 2.4rem;
@@ -649,6 +750,10 @@ export const Container = styled.div`
       font-weight: bold;
       text-transform: uppercase;
       font-size: 1.2rem;
+    }
+
+    input#file {
+      height: auto;
     }
 
     .form-field__error {
