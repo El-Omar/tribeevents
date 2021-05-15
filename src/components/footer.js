@@ -28,6 +28,7 @@ const Footer = () => {
             <li><AniLink paintDrip hex='#489c60' to='/'>Home</AniLink></li>
             <li><AniLink paintDrip hex='#40a1d7' to='/who-we-are'>Who are we?</AniLink></li>
             <li><AniLink paintDrip hex='#ffc200' to='/references'>References</AniLink></li>
+            <li><AniLink paintDrip hex='#d92828' to='/jobs'>Jobs</AniLink></li>
             <li><AniLink paintDrip hex='#d92828' to='/contact'>Contact</AniLink></li>
           </nav>
         </div>
